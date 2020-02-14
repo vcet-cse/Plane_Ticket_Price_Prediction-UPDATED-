@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>Flight Ticket Price Prediction</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!-- Icons font CSS-->
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all">
+</head>
+
+<body>
+    <center><img src="aeroplane_logo_1.gif" id="loading"/></center>
+    <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
+        <div class="wrapper wrapper--w960">
+            <div class="card card-2">
+                <div class="card-body">
+                    <center><h2 class="title">Flight Ticket Price Prediction</h2></center>
+			<div class="col-1">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select id="aeroplane" required>
+                                            <option value="-1" disabled selected value> -- Select an Airline -- </option>
+					    <option value="1">Air Asia</option>
+					    <option value="2">Air India</option>
+					    <option value="3">GoAir</option>
+					    <option value="4">IndiGo</option>
+					    <option value="5">Jet Airways</option>
+					    <option value="6">Jet Airways Business</option>
+					    <option value="7">Multiple carriers </option>
+					    <option value="8">Multiple carriers Premium economy</option>
+					    <option value="9">SpiceJet </option>
+					    <option value="10">Trujet </option>
+					    <option value="11">Vistara</option>
+					    <option value="12">Vistara Premium economy</option>
+                                        </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                        </div>
+			<div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+			  	    	<select id="source">
+			  	    		<option value="-1" disabled selected value> -- Select Source -- </option>
+						<option value="1">Banglore</option>
+						<option value="2">Chennai</option>
+						<option value="3">Delhi</option>
+						<option value="4">Kolkata</option>
+						<option value="5">Mumbai</option>
+				      	</select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+					<select id="destination">
+						<option value="-1" disabled selected value> -- Select an Destination -- </option>
+						<option value="1">Banglore</option>
+						<option value="2">Cochin</option>
+						<option value="3">Delhi</option>
+						<option value="4">Hyderabad</option>
+						<option value="5">Kolkata</option>
+						<option value="6">New Delhi</option>
+				      	</select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <input class="input--style-2 js-datepicker" type="text"  id="date" placeholder="Date of Journey">
+                                    <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+		  		          <select id="total_stpop">
+		  		          	<option value="-1" disabled selected value> -- Select Number of Seats -- </option>
+		  		               	<option value="0">0</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+				      	 </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-1">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+		  		         <select id="add_info">
+		  		         	<option value="-1" disabled selected value> -- Select Additional Information -- </option>
+		  		               	<option value="7">Any</option>
+						<option value="1">1 Long layover</option>
+						<option value="2">1 Short layover</option>
+						<option value="3">2 Long layover</option>
+						<option value="4">Business class</option>
+						<option value="5">Change airports </option>
+						<option value="6">In-flight meal not included</option>
+						<option value="8">No check-in baggage included</option>
+						<option value="5">Change airports </option>
+						<option value="10">Red-eye flight </option>
+				      	 </select>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                        </div>
+                        <center>	<div class="p-t-30">
+                            <button class="btn btn--radius btn--green" type="submit" onClick="predict();">Get the Price</button>
+                        </div>
+			<br /><a onclick="history.go(-1)" style="cursor: pointer;">Back</a></center>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/datepicker/moment.min.js"></script>
+    <script src="vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="js/global.js"></script>
+    <script>
+   	document.getElementById('loading').style.display = "none";
+    	function predict(){
+    		var aeroplane = document.getElementById('aeroplane').value;
+	        var source = document.getElementById('source').value;
+	    	var destination = document.getElementById('destination').value;
+	    	var total_stop = document.getElementById('total_stpop').value;
+		var date = document.getElementById('date').value;
+		var add_info = document.getElementById('add_info').value;
+		
+		var formData = new FormData();
+	        var data = JSON.stringify({'aeroplane': aeroplane, 'source':source, 'destination':destination, 'total_stop':total_stop, 'date':date, 'add_info' : add_info});
+	        
+		if(source == destination){
+			Swal.fire({
+			  icon: 'warning',
+			  title: 'Oops...',
+			  text: 'Same Source and Destination !!!',
+			})
+		}
+		else if(aeroplane != -1 && source != -1 && destination != -1 && total_stop != -1 && add_info != -1 && date != ""){
+			document.getElementById('loading').style.display = "block";
+			fetch('http://192.168.225.26:3001/', {
+			 	method: 'POST',
+		      		body: data,
+		    	}).then((response) => {
+		      		response.json().then((body) => {
+				document.getElementById('loading').style.display = "none";
+				Swal.fire({
+				  title: "Rs. "+body+".00",
+				  width: 600,
+				  padding: '3em',
+				  backdrop: `
+				    rgba(0,0,123,0.4)
+				    left top
+				    no-repeat
+				  `
+				})
+			   });
+		       });
+		}
+		else{
+			Swal.fire({
+			  icon: 'warning',
+			  title: 'Oops...',
+			  text: 'Enter Required field!',
+			})
+		}
+    	}
+    </script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->
